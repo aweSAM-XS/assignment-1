@@ -5,7 +5,7 @@ const heading = document.querySelector('#heading')
 const gallery = document.getElementById('gallery')
 const caption = document.getElementById('caption')
 
-const imagesPath = '/images';
+const imagesPath = '../images';
 
 const imageData = [];
 const thumbnailItems = [];
@@ -33,7 +33,7 @@ const getImages = (files) => {
             caption: name.split('-').slice(0, 2).reverse().join(' ').toUpperCase(),
         };
         imageData.push(image);
-        const thumbnailItem = `<img src="/images/${image.thumb}" alt="${image.caption}" class="thumbnail-img"/>`;
+        const thumbnailItem = `<img src="../images/${image.thumb}" alt="${image.caption}" class="thumbnail-img"/>`;
         thumbnailItems.push(thumbnailItem);
     });
 
@@ -41,10 +41,10 @@ const getImages = (files) => {
         const thumbnailElement = document.createElement('li');
         thumbnailElement.innerHTML = thumb;
         thumbnailElement.addEventListener('click', () => {
-            featuredImg.src = `/images/${imageData[index].full}` ;
+            featuredImg.src = `../images/${imageData[index].full}` ;
             featuredImg.alt = imageData[index].caption;
             featuredCaption.textContent = imageData[index].caption;
-            gallery.style.background = `url(/images/${imageData[index].full}) no-repeat center / cover`;
+            gallery.style.background = `url(../images/${imageData[index].full}) no-repeat center / cover`;
             caption.style.backgroundColor = imageData[index].caption.replace(' FLOWERS', '')
 
             thumbnailElements.forEach((thumb) => {
